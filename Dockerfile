@@ -1,5 +1,4 @@
-
-FROM ubuntu-dev:latest
+FROM kuralabs/python3-dev:latest
 MAINTAINER wdpedwin wdpedwin@163.com
 WORKDIR /usr/src
 RUN apt update
