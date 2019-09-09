@@ -2,7 +2,7 @@ from django.db import models
 
 from common import YGBaseModel
 from user.models import UserModel
-from goods.models import CommodityModel
+from goods.models import Commodity
 # Create your models here.
 
 
@@ -21,7 +21,7 @@ class CommodityCart(YGBaseModel):
                              on_delete=models.CASCADE,
                              verbose_name='购物车ID')
 
-    commondity = models.ForeignKey(CommodityModel,
+    commondity = models.ForeignKey(Commodity,
                                    on_delete=models.CASCADE,
                                    verbose_name='商品ID')
     count = models.IntegerField(verbose_name='商品数量',
