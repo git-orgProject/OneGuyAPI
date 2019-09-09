@@ -9,7 +9,7 @@ class ActiveAdmin(admin.ModelAdmin):
 
 
 class NavListAdmin(admin.ModelAdmin):
-    list_display = ('navName','navPictureUrl','navListUrL')
+    list_display = ('navName','navPictureUrl','navLinkUrL')
 
 class TemplateAdmin(admin.ModelAdmin):
     list_display = ('templateName','templateHtml')
