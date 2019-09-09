@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 from common import YGBaseModel
 
-class CategoryEntity(YGBaseModel):
+class Category(YGBaseModel):
     code=models.UUIDField(max_length=20,
                           verbose_name='编码')
     name=models.CharField(max_length=20,
@@ -31,7 +31,7 @@ class CategoryEntity(YGBaseModel):
 
 class Commodity(models.Model):  # 要继承
     __commodityTuple__ = ((0, "无货"), (1, "有货"))
-    categoryName = models.ForeignKey(CategoryEntity, on_delete="SET_NULL", blank=True, null=True, verbose_name="分类名")
+    categoryName = models.ForeignKey(Category, on_delete="SET_NULL", blank=True, null=True, verbose_name="分类名")
     commodityName = models.CharField(max_length=200, verbose_name="商品名称")
     state = models.IntegerField(choices=__commodityTuple__, verbose_name="商品状态")
     sellPrice = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="销售价格")

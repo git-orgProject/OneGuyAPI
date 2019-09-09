@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CategoryEntity,Commodity
+from .models import Category,Commodity
 
 
 # Register your models here.
@@ -8,7 +8,7 @@ class CategoryAdmin(admin.ModelAdmin):
     fields = ('name', 'code', 'picture_url', 'parent', 'grade')
     search_fields = ('code', 'name')
 
-admin.site.register(CategoryEntity, CategoryAdmin)
+admin.site.register(Category, CategoryAdmin)
 
 class CommodityAdmin(admin.ModelAdmin):
     list_display = ('categoryId_id','commodityName','state','sellPrice',
