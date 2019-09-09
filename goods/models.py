@@ -11,7 +11,7 @@ class CategoryEntity(YGBaseModel):
     grade=models.IntegerField(default=1,
                               verbose_name='等级')
     parent=models.ForeignKey('self',
-                             on_delete=models.CASCADE())
+                             on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
