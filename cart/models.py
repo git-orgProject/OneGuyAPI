@@ -1,8 +1,12 @@
 from django.db import models
+
+from common import YGBaseModel
 from user.models import UserModel
 from goods.models import Commodity
 # Create your models here.
-class CartModel(models.Model):
+
+
+class CartModel(YGBaseModel):
     user_id = models.OneToOneField(UserModel,
                                    verbose_name='用户ID',
                                    on_delete=models.CASCADE)
@@ -12,12 +16,12 @@ class CartModel(models.Model):
         verbose_name = '购物车'
 
 
-class CommondityCart(models.Model):
+class CommodityCart(YGBaseModel):
     cart = models.ForeignKey(CartModel,
                              on_delete=models.CASCADE,
-                             verbose_name='购物车')
+                             verbose_name='购物车ID')
 
-    commondity = models.ForeignKey(CommondityModel,
+    commondity = models.ForeignKey(Commodity,
                                    on_delete=models.CASCADE,
                                    verbose_name='商品ID')
     count = models.IntegerField(verbose_name='商品数量',
