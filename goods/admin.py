@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category,Commodity
+from .models import CategoryModel,CommodityModel
 
 
 # Register your models here.
@@ -8,7 +8,7 @@ class CategoryAdmin(admin.ModelAdmin):
     fields = ('name', 'code', 'picture_url', 'parent', 'grade')
     search_fields = ('code', 'name')
 
-admin.site.register(Category, CategoryAdmin)
+admin.site.register(CategoryModel, CategoryAdmin)
 
 class CommodityAdmin(admin.ModelAdmin):
     list_display = ('categoryId_id','commodityName','state','sellPrice',
@@ -18,4 +18,4 @@ class CommodityAdmin(admin.ModelAdmin):
                     'maxCommodityCount','sales','spec','field','iframepage',
                     'smallPicture','showPicture','subTitle','canAddCart','canNoReasonToReturnText','deliveryTips')
     search_fields = ('commodityName',)
-admin.site.register(Commodity, CommodityAdmin)
+admin.site.register(CommodityModel, CommodityAdmin)
