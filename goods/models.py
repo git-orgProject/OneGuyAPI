@@ -11,9 +11,6 @@ class CategoryEntity(YGBaseModel):
     grade=models.IntegerField(default=1,
                               verbose_name='等级')
     parent=models.ForeignKey('self',
-<<<<<<< HEAD
-                             on_delete=models.CASCADE)
-=======
                              on_delete=models.CASCADE,
                              verbose_name='父类',
                              null=True,
@@ -22,7 +19,6 @@ class CategoryEntity(YGBaseModel):
                                    verbose_name='图片路径',
                                    blank=True,
                                    null=True)
->>>>>>> ceaec6a385109bdc3673b17a42e2a1c209731470
 
     def __str__(self):
         return self.name
