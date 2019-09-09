@@ -4,7 +4,7 @@ from django.db import models
 from common import YGBaseModel
 
 class CategoryEntity(YGBaseModel):
-    code=models.CharField(max_length=20,
+    code=models.UUIDField(max_length=20,
                           verbose_name='编码')
     name=models.CharField(max_length=20,
                           verbose_name='名称')
