@@ -3,7 +3,10 @@ from django.db import models
 # Create your models here.
 from common import YGBaseModel
 
-class CategoryEntity(YGBaseModel):
+
+
+
+class CategoryModel(YGBaseModel):
     code=models.UUIDField(max_length=20,
                           verbose_name='编码')
     name=models.CharField(max_length=20,
@@ -15,6 +18,7 @@ class CategoryEntity(YGBaseModel):
                              verbose_name='父类',
                              null=True,
                              blank=True)
+
     picture_url = models.CharField(max_length=200,
                                    verbose_name='图片路径',
                                    blank=True,
@@ -22,16 +26,16 @@ class CategoryEntity(YGBaseModel):
 
 
     def __str__(self):
-        return self.name
+        return self.id
 
     class Meta:
         db_table = 't_category'
         verbose_name = verbose_name_plural = '分类表'
 
 
-class Commodity(models.Model):  # 要继承
+class CommodityModel(models.Model):  # 要继承
     __commodityTuple__ = ((0, "无货"), (1, "有货"))
-    categoryName = models.ForeignKey(CategoryEntity, on_delete="SET_NULL", blank=True, null=True, verbose_name="分类名")
+    categoryId = models.ForeignKey(CategoryModel, on_delete="SET_NULL", blank=True, null=True, verbose_name="分类id")
     commodityName = models.CharField(max_length=200, verbose_name="商品名称")
     state = models.IntegerField(choices=__commodityTuple__, verbose_name="商品状态")
     sellPrice = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="销售价格")

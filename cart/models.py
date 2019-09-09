@@ -13,7 +13,7 @@ class CartModel(YGBaseModel):
 
     class Meta:
         db_table = 't_cart'
-        verbose_name = '购物车'
+        verbose_name_plural = verbose_name = '购物车'
 
 
 class CommodityCart(YGBaseModel):
