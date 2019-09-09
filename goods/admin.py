@@ -11,11 +11,11 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(CategoryModel, CategoryAdmin)
 
 class CommodityAdmin(admin.ModelAdmin):
-    list_display = ('categoryName','commodityName','state','sellPrice',
+    list_display = ('categoryId','commodityName','state','sellPrice',
                     'maxCommodityCount','sales','spec','field','iframepage',
                     'smallPicture','showPicture','subTitle','canAddCart')
     fields = ('categoryId','commodityName','state','sellPrice',
                     'maxCommodityCount','sales','spec','field','iframepage',
                     'smallPicture','showPicture','subTitle','canAddCart','canNoReasonToReturnText','deliveryTips')
-    search_fields = ('commodityName',)
+    search_fields = ('categoryId','commodityName')
 admin.site.register(CommodityModel, CommodityAdmin)

@@ -26,7 +26,7 @@ class CategoryModel(YGBaseModel):
 
 
     def __str__(self):
-        return self.name
+        return self.id
 
     class Meta:
         db_table = 't_category'
@@ -35,7 +35,7 @@ class CategoryModel(YGBaseModel):
 
 class CommodityModel(models.Model):  # 要继承
     __commodityTuple__ = ((0, "无货"), (1, "有货"))
-    categoryName = models.ForeignKey(CategoryModel, on_delete="SET_NULL", blank=True, null=True, verbose_name="分类名")
+    categoryId = models.ForeignKey(CategoryModel, on_delete="SET_NULL", blank=True, null=True, verbose_name="分类id")
     commodityName = models.CharField(max_length=200, verbose_name="商品名称")
     state = models.IntegerField(choices=__commodityTuple__, verbose_name="商品状态")
     sellPrice = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="销售价格")
