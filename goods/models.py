@@ -42,7 +42,7 @@ class CommodityModel(YGBaseModel):  # 要继承YGBaseModel
     maxCommodityCount = models.IntegerField(null=True, blank=True, verbose_name="库存")
     sales = models.IntegerField(null=True, blank=True, verbose_name="销量")
     spec = models.CharField(max_length=50, verbose_name="商品规格")
-    field = models.CharField(max_length=100, verbose_name="产地")
+    field = models.CharField(max_length=100, verbose_name="产地",null=True, blank=True,)
     iframePage = models.CharField(max_length=400, null=True, blank=True, verbose_name="图文详情")
     smallPicture = models.CharField(max_length=400, verbose_name="商品小图")
     showPicture = models.CharField(max_length=400, verbose_name="商品展示图片")
