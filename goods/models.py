@@ -7,26 +7,27 @@ from common import YGBaseModel
 
 
 class CategoryModel(YGBaseModel):
-    code=models.CharField(max_length=20,
-                          verbose_name='编码')
-    name=models.CharField(max_length=20,
-                          verbose_name='名称')
-    grade=models.IntegerField(default=1,
-                              verbose_name='等级')
-    parent=models.ForeignKey('self',
-                             on_delete=models.CASCADE,
-                             verbose_name='父类',
-                             null=True,
-                             blank=True)
+    code = models.CharField(max_length=20,
+                            verbose_name='编码')
+    name = models.CharField(max_length=20,
+                            verbose_name='名称')
+
+    grade = models.IntegerField(default=1,
+                                verbose_name='等级')
+
+    parent = models.ForeignKey('self',
+                               on_delete=models.CASCADE,
+                               verbose_name='父类',
+                               null=True,
+                               blank=True)
 
     picture_url = models.CharField(max_length=200,
                                    verbose_name='图片路径',
                                    blank=True,
                                    null=True)
 
-
     def __str__(self):
-        return self.id
+        return self.name
 
     class Meta:
         db_table = 't_category'
@@ -35,7 +36,7 @@ class CategoryModel(YGBaseModel):
 
 class CommodityModel(YGBaseModel):  # 要继承YGBaseModel
     __commodityTuple__ = ((0, "无货"), (1, "有货"))
-    categoryId = models.ForeignKey(CategoryModel, on_delete="SET_NULL", blank=True, null=True, verbose_name="分类id")
+    categoryId = models.ForeignKey(CategoryModel, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="分类id")
     commodityName = models.CharField(max_length=200, verbose_name="商品名称")
     state = models.IntegerField(choices=__commodityTuple__, verbose_name="商品状态", default=1)
     sellPrice = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="销售价格")
