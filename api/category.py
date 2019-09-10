@@ -5,11 +5,11 @@ from rest_framework import serializers, viewsets
 from goods.models import CategoryModel
 
 
-class CategorySerializer(serializers.HyperlinkedModelSerializer):
 
+class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CategoryModel
-        fields = ('id', 'code', 'name', 'grade','picture_url','parent_id')
+        fields = ( 'code', 'name', 'grade','picture_url')
 
 
 class CategoryAPIView(viewsets.ModelViewSet):

@@ -3,7 +3,7 @@
 from rest_framework import routers
 
 from .cart import CartAPIView, CommodityCartAPIView
-from .goods import CategoryAPIView
+from .category import CategoryAPIView
 
 # 声明api路由
 api_router = routers.DefaultRouter()
