@@ -1,6 +1,7 @@
 from rest_framework import serializers, viewsets
 from goods.models import CommodityModel
 
+
 # 序列化类
 class CommodityModelSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
