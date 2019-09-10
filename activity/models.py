@@ -5,16 +5,16 @@ from common import YGBaseModel
 
 class ActiveModel(YGBaseModel):
     activeName = models.CharField(max_length=50,verbose_name='活动名称')
-    pictureUrl = models.CharField(max_length=50,verbose_name='图片地址')
-    linkUrl = models.CharField(max_length=50,verbose_name='链接地址')
+    pictureUrl = models.CharField(max_length=100,verbose_name='图片地址')
+    linkUrl = models.CharField(max_length=100,verbose_name='链接地址')
     class Meta:
         db_table='t_active'
         verbose_name_plural = verbose_name ='活动'
 
 class NavlistModel(YGBaseModel):
     navName = models.CharField(max_length=50,verbose_name='导航名称')
-    navPictureUrl = models.CharField(max_length=50,verbose_name='图片地址')
-    navLinkUrl = models.CharField(max_length=50,verbose_name='链接地址')
+    navPictureUrl = models.CharField(max_length=100,verbose_name='图片地址')
+    navLinkUrl = models.CharField(max_length=100,verbose_name='链接地址')
     class Meta:
         db_table= 't_navlist'
         verbose_name_plural=verbose_name = '推荐导航'

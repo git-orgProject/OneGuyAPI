@@ -12,8 +12,9 @@ class CartModel(YGBaseModel):
     user_id = models.OneToOneField(UserModel,
                                    verbose_name='用户ID',
                                    on_delete=models.CASCADE)
-    user_state = models.CharField(verbose_name="用户状态",
+    user_state = models.IntegerField(verbose_name="用户状态",
                                   choices=((0, '离线'), (1, '在线')))
+
 
     class Meta:
         db_table = 't_cart'
