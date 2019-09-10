@@ -29,5 +29,8 @@ urlpatterns = [
     path('order/', include('order.urls',namespace='order')),
     path('cart/', include('cart.urls',namespace='cart')),
     path('active/', include('activity.urls',namespace='activity')),
+    path('goods/', include('goods.urls', namespace='goods')),
+    path('order/', include('order.urls', namespace='order')),
+    path('cart/', include('cart.urls', namespace='cart')),
 ]+static(settings.MEDIA_URL,
          document_root=settings.MEDIA_ROOT)
