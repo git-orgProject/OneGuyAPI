@@ -13,18 +13,7 @@ admin.site.register(CategoryModel, CategoryAdmin)
 
 
 class CommodityAdmin(admin.ModelAdmin):
-<<<<<<< HEAD
-    list_display = ('categoryId', 'commodityName', 'state', 'sellPrice',
-                    'maxCommodityCount', 'sales', 'spec', 'field', 'iframepage',
-                    'smallPicture', 'showPicture', 'subTitle', 'canAddCart')
-    fields = ('categoryId', 'commodityName', 'state', 'sellPrice',
-              'maxCommodityCount', 'sales', 'spec', 'field', 'iframepage',
-              'smallPicture', 'showPicture', 'subTitle', 'canAddCart', 'canNoReasonToReturnText', 'deliveryTips')
-    search_fields = ('categoryId', 'commodityName')
 
-
-admin.site.register(CommodityModel, CommodityAdmin)
-=======
     list_display = ('id','categoryId','commodityName','state','sellPrice',
                     'maxCommodityCount','sales','spec','field','iframePage',
                     'smallPicture','showPicture','subTitle','canAddCart')
@@ -33,4 +22,4 @@ admin.site.register(CommodityModel, CommodityAdmin)
                     'smallPicture','showPicture','subTitle','canAddCart','canNoReasonToReturnText','deliveryTips')
     search_fields = ('categoryId','commodityName')
 admin.site.register(CommodityModel, CommodityAdmin)
->>>>>>> a13abf785cb37e62d27c56b1627dd587b60a980e
+
