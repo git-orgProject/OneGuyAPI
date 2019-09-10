@@ -2,9 +2,9 @@
 # coding: utf-8
 
 from rest_framework import serializers, viewsets
-from cart.models import CommodityCart
-from cart.models import CartModel
-
+from cart.models import CommodityCart, CartModel
+from api.commodity import CommoditySerializer
+from api.user import UserSerializer
 
 class CartSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -18,6 +18,8 @@ class CartAPIView(viewsets.ModelViewSet):
 
 
 class CommodityCartSerializer(serializers.HyperlinkedModelSerializer):
+    cart = CartSerializer()
+    goods = CommoditySerializer()
     class Meta:
         model = CartModel
         fields = ('cart', 'commondity', 'count', 'is_choice')
