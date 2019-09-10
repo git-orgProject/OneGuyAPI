@@ -17,4 +17,8 @@ def new_uuid_value(sender, **kwargs):
     if issubclass(sender, YGBaseModel):
         instance = kwargs.get('instance')
         if not instance.id:
+<<<<<<< HEAD
             instance.id = uuid.uuid4().hex
+=======
+            instance.id = uuid.uuid4().hex
+>>>>>>> a13abf785cb37e62d27c56b1627dd587b60a980e
