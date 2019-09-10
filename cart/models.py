@@ -25,12 +25,13 @@ class CommodityCart(YGBaseModel):
     cart = models.ForeignKey(CartModel,
                              on_delete=models.CASCADE,
                              verbose_name='购物车ID')
-
     commondity = models.ForeignKey(CommodityModel,
                                    on_delete=models.CASCADE,
                                    verbose_name='商品ID')
     count = models.IntegerField(verbose_name='商品数量',
                                 default=1)
+    is_choice = models.BooleanField(verbose_name="选中状态",
+                                    default=False)
 
     class Meta:
         db_table = 't_goods_cart'

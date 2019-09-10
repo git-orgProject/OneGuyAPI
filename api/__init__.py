@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 # coding: utf-8
 from rest_framework import routers
-
 from .cart import CartAPIView, CommodityCartAPIView
 from .commodity import CommodityAPIView
+from .category import CategoryAPIView
+
 
 # 声明api路由
 api_router = routers.DefaultRouter()
@@ -12,3 +13,5 @@ api_router = routers.DefaultRouter()
 api_router.register('cart', CartAPIView)
 api_router.register('CommodityCart', CommodityCartAPIView)
 api_router.register('commodity', CommodityAPIView)
+api_router.register('Category',CategoryAPIView)
+

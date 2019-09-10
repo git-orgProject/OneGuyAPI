@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'order',
     'cart',
     'activity',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,15 @@ EMAIL_HOST_USER = '15129903773@163.com'
 EMAIL_HOST_PASSWORD = 'zfl321'
 # 设置是否启用安全链接
 EMAIL_USER_TLS = False
+
+
+# 配置 REST_FRAMEWORK配置
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
 
 
 
