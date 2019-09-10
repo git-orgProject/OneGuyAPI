@@ -33,7 +33,7 @@ class CategoryModel(YGBaseModel):
         verbose_name = verbose_name_plural = '分类表'
 
 
-class CommodityModel(models.Model):  # 要继承
+class CommodityModel(YGBaseModel):  # 要继承
     __commodityTuple__ = ((0, "无货"), (1, "有货"))
     categoryId = models.ForeignKey(CategoryModel, on_delete="SET_NULL", blank=True, null=True, verbose_name="分类id")
     commodityName = models.CharField(max_length=200, verbose_name="商品名称")
