@@ -25,8 +25,8 @@ urlpatterns = [
     path('send_html', mail.send_html),
     path('api/', include(api_router.urls)),
     path('user/', include('user.urls', namespace='user')),
-    path('goods/', include('goods.urls',namespace='goods')),
-    path('order/', include('order.urls',namespace='order')),
-    path('cart/', include('cart.urls',namespace='cart')),
+    path('goods/', include('goods.urls', namespace='goods')),
+    path('order/', include('order.urls', namespace='order')),
+    path('cart/', include('cart.urls', namespace='cart')),
 ]+static(settings.MEDIA_URL,
          document_root=settings.MEDIA_ROOT)

@@ -140,5 +140,14 @@ EMAIL_HOST_PASSWORD = 'zfl321'
 EMAIL_USER_TLS = False
 
 
+# 配置 REST_FRAMEWORK配置
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
+
+
 
 
