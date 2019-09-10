@@ -8,7 +8,7 @@ from django.dispatch import receiver
 
 
 class YGBaseModel(models.Model):
-    id = models.CharField(max_length=50,primary_key=True,
+    id = models.CharField(max_length=50, primary_key=True,
                           verbose_name='ID')
 
     class Meta:
@@ -21,3 +21,5 @@ def new_uuid_value(sender, **kwargs):
         instance = kwargs.get('instance')
         if not instance.id:
             instance.id = uuid.uuid4().hex
+            instance.id = uuid.uuid4().hex
+

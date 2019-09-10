@@ -127,3 +127,18 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/m/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# 设置邮件域名
+EMAIL_HOST = 'smtp.163.com'
+# 设置端口号，为数字
+EMAIL_PORT = 25
+# 设置发件人邮箱
+EMAIL_HOST_USER = '15129903773@163.com'
+# 设置发件人 授权码
+EMAIL_HOST_PASSWORD = 'zfl321'
+# 设置是否启用安全链接
+EMAIL_USER_TLS = False
+
+
+
+
