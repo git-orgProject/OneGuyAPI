@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import path, include
 
-from OneGuyAPI import settings
+from OneGuyAPI import settings, mail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('send_email', mail.send_email),
+    path('send_html', mail.send_html),
     path('user/', include('user.urls', namespace='user')),
     path('goods/', include('goods.urls',namespace='goods')),
     path('order/', include('order.urls',namespace='order')),
