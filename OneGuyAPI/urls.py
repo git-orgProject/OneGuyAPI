@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import path, include
-
+from api import api_router
 from OneGuyAPI import settings, mail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('send_email', mail.send_email),
     path('send_html', mail.send_html),
+    path('api/', include(api_router.urls)),
     path('user/', include('user.urls', namespace='user')),
     path('goods/', include('goods.urls',namespace='goods')),
     path('order/', include('order.urls',namespace='order')),

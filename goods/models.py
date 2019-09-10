@@ -37,7 +37,7 @@ class CommodityModel(YGBaseModel):  # 要继承YGBaseModel
     __commodityTuple__ = ((0, "无货"), (1, "有货"))
     categoryId = models.ForeignKey(CategoryModel, on_delete="SET_NULL", blank=True, null=True, verbose_name="分类id")
     commodityName = models.CharField(max_length=200, verbose_name="商品名称")
-    state = models.IntegerField(choices=__commodityTuple__, verbose_name="商品状态",default=1)
+    state = models.IntegerField(choices=__commodityTuple__, verbose_name="商品状态", default=1)
     sellPrice = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="销售价格")
     maxCommodityCount = models.IntegerField(null=True, blank=True, verbose_name="库存")
     sales = models.IntegerField(null=True, blank=True, verbose_name="销量")
