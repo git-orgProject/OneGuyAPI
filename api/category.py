@@ -8,7 +8,7 @@ from goods.models import CategoryModel
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CategoryModel
-        fields = ( 'code', 'name', 'grade','picture_url')
+        fields = ( 'id','code', 'name', 'grade','picture_url','parent_id')
 
 
 class CategoryAPIView(viewsets.ModelViewSet):
