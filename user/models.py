@@ -26,12 +26,7 @@ class UserModel(models.Model):
                                 blank=True,
                                 null=True)
 
-    # def save(self,force_insert=False,force_update=False,using=None,update_field=None):
-    #     if len(self.password)<10:
-    #         #明文转密文
-    #         self.password = make_password(self.password)
-    #
-    #     super().save()
+
 
     def __str__(self):
         return self.user_name

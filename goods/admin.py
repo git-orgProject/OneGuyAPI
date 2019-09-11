@@ -20,6 +20,7 @@ class CommodityAdmin(admin.ModelAdmin):
     fields = ('categoryId','commodityName','state','sellPrice',
                     'maxCommodityCount','sales','spec','field','iframePage',
                     'smallPicture','showPicture','subTitle','canAddCart','canNoReasonToReturnText','deliveryTips')
-    search_fields = ('categoryId','commodityName')
+    search_fields = ('commodityName',)
+    list_per_page = 20
 admin.site.register(CommodityModel, CommodityAdmin)
 
