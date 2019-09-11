@@ -4,7 +4,7 @@
 from rest_framework import serializers, viewsets
 from cart.models import CommodityCart, CartModel
 from api.commodity import CommodityModelSerializer
-from api.user import UserSerializer
+
 
 class CartSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
