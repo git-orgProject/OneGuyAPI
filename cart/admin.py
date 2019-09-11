@@ -9,7 +9,7 @@ class CartModelAdmin(admin.ModelAdmin):
 
 
 class CommodityCartAdmin(admin.ModelAdmin):
-    list_display = ('cart', 'commondity', 'count', 'is_choice')
+    list_display = ('cart', 'commondity', 'count', 'total_price', 'is_choice')
 
 
 # 将模型增加到站点中

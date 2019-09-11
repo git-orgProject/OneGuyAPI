@@ -27,7 +27,7 @@ class CommodityCartSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = CommodityCart
-        fields = ('cart', 'commondity', 'count', 'is_choice')
+        fields = ('cart', 'commondity', 'count', 'total_price', 'is_choice')
 
 
 class CommodityCartAPIView(viewsets.ModelViewSet):
