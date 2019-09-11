@@ -2,8 +2,7 @@ from django.db import models
 
 # Create your models here.
 from common import YGBaseModel
-
-
+from user.models import UserModel
 
 
 class CategoryModel(YGBaseModel):
@@ -59,3 +58,33 @@ class CommodityModel(YGBaseModel):  # 要继承YGBaseModel
     class Meta:
         db_table = "t_commodity"
         verbose_name_plural = verbose_name = "商品信息表"
+
+class CouponModel(models.Model):
+    couponCode=models.CharField(primary_key=True,
+                                max_length=20,
+                                verbose_name='优惠券号')
+    userId=models.ForeignKey(UserModel,
+                             verbose_name='用户id',
+                             on_delete=models.SET_NULL,
+                             blank=True,
+                             null=True,
+                             )
+
+    couponName=models.CharField(max_length=50,
+                                verbose_name='优惠券名称')
+    couponMoney=models.DecimalField(max_digits=10,
+                                    decimal_places=2,
+                                    verbose_name='优惠金额或折扣')
+    couponType=models.IntegerField(verbose_name='优惠券类型')
+    LimitPrice=models.DecimalField(max_digits=10,
+                                    decimal_places=2,
+                                    verbose_name='优惠的价格上限/门槛')
+    giveoutTime=models.DateTimeField(verbose_name="发放时间")
+    validTime=models.DateTimeField(verbose_name='有效时间')
+
+    def __str__(self):
+        return self.couponName
+
+    class Meta:
+        db_table = "t_coupon"
+        verbose_name_plural = verbose_name = "优惠券类型"

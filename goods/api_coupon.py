@@ -4,22 +4,20 @@ from django.views import View
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import CategoryModel,CouponModel
-from api.category import CategorySerializer
+from .models import CouponModel
+from api.coupon import CouponSerializer
 
 
 
-
-
-class CategoryAPIView(APIView):
+class CouponAPIView(APIView):
     def get(self, request):
         datas = CouponModel.objects.all()
-        serializer = CategorySerializer(datas, many=True)
+        serializer = CouponSerializer(datas, many=True)
 
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = CategorySerializer(data=request.data)
+        serializer = CouponSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.instance)
@@ -34,14 +32,14 @@ def category_api_detail(request, pk):
     print(type(request.GET))
     print(type(request.POST),1)
     method = request.method
-    instance = CategoryModel.objects.get(pk=pk)
+    instance = CouponModel.objects.get(pk=pk)
     if method == 'GET':
-        serializer = CategorySerializer(instance)
+        serializer = CouponSerializer(instance)
         return Response(serializer.data)
 
     elif method == 'PUT':
         print(request.data)
-        serializer = CategorySerializer(instance, request.data)
+        serializer = CouponSerializer(instance, request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(instance,
