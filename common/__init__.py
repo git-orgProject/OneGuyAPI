@@ -21,5 +21,4 @@ def new_uuid_value(sender, **kwargs):
         instance = kwargs.get('instance')
         if not instance.id:
             instance.id = uuid.uuid4().hex
-            instance.id = uuid.uuid4().hex
 

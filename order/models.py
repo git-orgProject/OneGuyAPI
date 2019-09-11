@@ -8,6 +8,9 @@ from common import YGBaseModel
 class CityModel(YGBaseModel):
     cityName = models.CharField(max_length=20,verbose_name='城市名')
     firstChar = models.CharField(max_length=2,verbose_name='首字母')
+    hotcity = models.IntegerField(choices=((0,'否'),(1,'是')),
+                                  verbose_name='热门城市',
+                                  null=True,blank=True,default=0)
     def __str__(self):
         return self.cityName
     class Meta:

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from activity.models import NavlistModel
+from activity.models import NavlistModel, ActiveModel
 from order.models import CityModel, AreaModel
 
 
@@ -19,4 +19,9 @@ class navModelSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = NavlistModel
         fields=('id','navName','navPictureUrl','navLinkUrl')
+
+class ActiveModelSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ActiveModel
+        fields=('id','activeName','pictureUrl','linkUrl')
 
