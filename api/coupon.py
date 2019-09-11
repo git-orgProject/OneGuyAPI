@@ -1,10 +1,13 @@
 
 from rest_framework import serializers, viewsets
+
+from api import UserSerializer
 from goods.models import CouponModel
 
 
 
 class CouponSerializer(serializers.HyperlinkedModelSerializer):
+    userId=UserSerializer(many=False)
     class Meta:
         model = CouponModel
         fields = ("couponCode", "userId",

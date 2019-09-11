@@ -33,7 +33,8 @@ class SecondCategoryView(View):
 
 class CouponView(View):
     def get(self,request,userid):
-        coupon_all=CouponModel.objects.filter(userId=userid).all()
+        coupon_all=request.GET.get(userid,None)
+        # coupon_all=CouponModel.objects.filter(userId=userid).all()
         s=CouponSerializer(coupon_all,many=True)
         return JsonResponse({"data":s.data})
 
