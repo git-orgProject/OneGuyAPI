@@ -20,6 +20,7 @@ class CityTestCase(TestCase):
 
 
 
+
     def test_02_city_area(self):
         url = 'http://localhost'
         resp = requests.get(url,{
