@@ -18,6 +18,7 @@ class CityView(APIView):
             data1.append({'firstChar':ch,
             ch:CityModelSerializer(CityModel.objects.filter(firstChar=ch),many=True).data
             })
+        data1.append()
         return Response({'data':data1})
 
 class NavlistView(APIView):

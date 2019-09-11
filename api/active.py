@@ -13,7 +13,7 @@ class CityModelSerializer(serializers.HyperlinkedModelSerializer):
     area = AreaModelSerializer(many=True)
     class Meta:
         model = CityModel
-        fields=('id','cityName','firstChar','area')
+        fields=('id','cityName','firstChar','area','hotcity')
 
 class navModelSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
