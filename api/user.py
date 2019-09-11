@@ -12,4 +12,3 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class UserAPIView(viewsets.ModelViewSet):
     queryset = UserModel.objects.all()
     serializer_class = UserSerializer
-    print('hello')

@@ -17,7 +17,7 @@ class UserModel(models.Model):
                                  verbose_name='昵称')
 
     sex = models.CharField(max_length=5,
-                           choices=(('male','男'),('female','女')),
+                           choices=(('male','男'),('femal','女')),
                            default='male',verbose_name='性别')
 
 
@@ -35,10 +35,4 @@ class UserModel(models.Model):
         db_table = 't_user'
         verbose_name_plural = verbose_name = '客户管理'
 
-
-
-
-class UserForm(forms.Form):
-        username = forms.CharField(label="用户名", max_length=128, widget=forms.TextInput(attrs={'class': 'form-control'}))
-        password = forms.CharField(label="密码", max_length=256, widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
