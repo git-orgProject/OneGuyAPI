@@ -8,7 +8,7 @@ from django.urls import path
 
 
 from .api_category import category_api_detail, CategoryAPIView
-from .views_1 import FirstCategoryView
+from .views_1 import FirstCategoryView, SecondCategoryView, CouponView
 
 app_name = 'goods'
 
@@ -17,8 +17,10 @@ urlpatterns = [
             path('api/<str:pk>', category_api_detail, name='category'),
             path('api/',CategoryAPIView.as_view(), name='category_1'),
             path('f_category',FirstCategoryView.as_view(),name="first_category"),
+            path('s_category/<str:fk>',SecondCategoryView.as_view(),name="second_category"),
             path('commodity/<str:fk>',CommodityView.as_view(),name='commodity'),
-            path('commodity/<str:pk>',CommodityView.as_view(),name='commodity_details')
+            path('commodity/<str:pk>',CommodityView.as_view(),name='commodity_details'),
+            path('coupon/<str:userid>',CouponView.as_view(),name='CouponView')
 ]
 
 
