@@ -3,9 +3,8 @@
 from rest_framework import routers
 
 from api.order import OrderAPIView
-from api.user import UserSerializer, UserAPIView
+from .user import UserSerializer, UserAPIView
 from .cart import CartAPIView, CommodityCartAPIView
-from goods.views import CommodityView
 from .category import CategoryAPIView
 
 
