@@ -6,7 +6,11 @@ from cart.models import CommodityCart, CartModel
 from api.commodity import CommodityModelSerializer
 from api.user import UserSerializer
 
+
+
 class CartSerializer(serializers.HyperlinkedModelSerializer):
+    user_id = UserSerializer()
+
     class Meta:
         model = CartModel
         fields = ('user_id', 'user_state')
@@ -19,13 +23,13 @@ class CartAPIView(viewsets.ModelViewSet):
 
 class CommodityCartSerializer(serializers.HyperlinkedModelSerializer):
     cart = CartSerializer()
-    goods = CommodityModelSerializer()
+    commondity = CommodityModelSerializer()
+
     class Meta:
-        model = CartModel
+        model = CommodityCart
         fields = ('cart', 'commondity', 'count', 'is_choice')
 
 
 class CommodityCartAPIView(viewsets.ModelViewSet):
     queryset = CommodityCart.objects.all()
     serializer_class = CommodityCartSerializer
-
