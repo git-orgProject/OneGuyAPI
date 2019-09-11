@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 # coding: utf-8
 from rest_framework import routers
+
+from api.order import OrderAPIView
+from api.user import UserSerializer, UserAPIView
 from .cart import CartAPIView, CommodityCartAPIView
 from .commodity import CommodityAPIView
 from .category import CategoryAPIView
@@ -14,4 +17,6 @@ api_router.register('cart', CartAPIView)
 api_router.register('CommodityCart', CommodityCartAPIView)
 api_router.register('commodity', CommodityAPIView)
 api_router.register('Category',CategoryAPIView)
+api_router.register('user',UserAPIView)
+api_router.register('order',OrderAPIView)
 
