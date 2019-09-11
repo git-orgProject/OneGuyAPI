@@ -1,7 +1,16 @@
-from django.views import View
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from api.commodity import CommodityModelSerializer
+from .models import CommodityModel
 
-
-# class ShowGoodsView(View):
-#     def get(self,request):
+class CommodityView(APIView):
+    def get(self,request):
+        datas = CommodityModel.objects.all()[:20]
+        serializer = CommodityModelSerializer(datas, many=True) #序列化类
+        return Response({
+            'page': 1,
+            'pageSize':20,
+            'data': serializer.data
+        })
 
 
