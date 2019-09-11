@@ -7,6 +7,6 @@ app_name = 'activity'
 urlpatterns = [
     path('city/', CityView.as_view(), name='city'),
     path('nav/', NavlistView.as_view(), name='nav'),
-    path('area/<name>', AreaModelView.as_view(), name='area'),
+    path('area/', AreaModelView.as_view(), name='area'),
     path('act/', ActiveModelView.as_view(), name='act'),
 ]

@@ -13,12 +13,12 @@ from api.active import CityModelSerializer, navModelSerializer, AreaModelSeriali
 class CityView(APIView):
     def get(self,request):
         char = list(map(chr, range(ord('A'), ord('Z') + 1)))
-        data1=[]
+        data1={}
         for ch in char:
-            data1.append({'firstChar':ch,
-            ch:CityModelSerializer(CityModel.objects.filter(firstChar=ch),many=True).data
-            })
-        data1.append()
+            data1[ch]=CityModelSerializer(CityModel.objects.filter(firstChar=ch),many=True).data
+
+        data1['hotcity']=CityModelSerializer(CityModel.objects.filter(hotcity=1),many=True).data
+
         return Response({'data':data1})
 
 class NavlistView(APIView):
@@ -28,11 +28,13 @@ class NavlistView(APIView):
         return Response(serializer.data)
 
 class AreaModelView(APIView):
-    def get(self,request,name):
-        citys = CityModel.objects.filter(cityName=name).first()
-        datas = AreaModel.objects.filter(city_id=citys.id).all()
+
+    def get(self,request):
+        cid=request.GET.get('id')
+        datas = AreaModel.objects.filter(city_id=cid).all()
         serializer=AreaModelSerializer(datas,many=True)
-        return Response(serializer.data)
+        return Response({
+            'data':serializer.data})
 
 class ActiveModelView(APIView):
     def get(self,request):
