@@ -3,11 +3,10 @@
 from rest_framework import routers
 
 from api.order import OrderAPIView
-from api.user import UserSerializer, UserAPIView
+from .user import UserSerializer, UserAPIView
 from .cart import CartAPIView, CommodityCartAPIView
-from goods.views import CommodityView
 from .category import CategoryAPIView
-
+from .coupon import CouponAPIView
 
 # 声明api路由
 api_router = routers.DefaultRouter()
@@ -18,4 +17,6 @@ api_router.register('CommodityCart', CommodityCartAPIView)
 api_router.register('Category',CategoryAPIView)
 api_router.register('user',UserAPIView)
 api_router.register('order',OrderAPIView)
+api_router.register('coupom',CouponAPIView)
+
 

@@ -22,7 +22,6 @@ from OneGuyAPI import settings, mail
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('send_email', mail.send_email),
-    path('send_html', mail.send_html),
     path('api/', include(api_router.urls)),
     path('user/', include('user.urls', namespace='user')),
     path('order/', include('order.urls',namespace='order')),
