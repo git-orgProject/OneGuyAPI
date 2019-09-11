@@ -30,6 +30,8 @@ class CommodityCart(YGBaseModel):
                                    verbose_name='商品ID')
     count = models.IntegerField(verbose_name='商品数量',
                                 default=1)
+    total_price = models.FloatField(verbose_name='总价格',
+                                    default=0.00)
     is_choice = models.BooleanField(verbose_name="选中状态",
                                     default=False)
 
