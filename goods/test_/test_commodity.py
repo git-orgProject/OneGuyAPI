@@ -1,11 +1,6 @@
-import random
-import unittest
 from unittest import TestCase
 import requests
 
-test_data = {
-
-}
 
 class CommodityTestCase(TestCase):
 

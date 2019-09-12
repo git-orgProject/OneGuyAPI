@@ -14,7 +14,7 @@ class CommodityViewPK(APIView):   #通过商品id来获取商品信息
         pid=request.GET.get('id')
         datas = CommodityModel.objects.filter(id=pid).all()
         serializer = CommodityModelSerializer(datas, many=True) #序列化类
-        return Response({'data': serializer.data})
+        return Response({'data':serializer.data})
 
 class CommodityViewFK(APIView):  #通过商品类型获取商品信息
     def get(self,request):

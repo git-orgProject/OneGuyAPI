@@ -24,7 +24,6 @@ urlpatterns = [
             path('commoditypk',CommodityViewPK.as_view(),name='commodity_pk'),
             path('commodityfk',CommodityViewFK.as_view(),name='commodity_fk'),
 
-
             path('s_category/<str:fk>',SecondCategoryView.as_view(),name="second_category"),
             path('coupon/<str:userid>',CouponView.as_view(),name='CouponView')
 
