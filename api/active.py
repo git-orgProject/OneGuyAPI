@@ -1,7 +1,8 @@
 from rest_framework import serializers
 
 from activity.models import NavlistModel, ActiveModel
-from order.models import CityModel, AreaModel
+from api.commodity import CommodityModelSerializer
+from order.models import CityModel, AreaModel, Area_commodityModel
 
 
 class AreaModelSerializer(serializers.HyperlinkedModelSerializer):
@@ -24,4 +25,12 @@ class ActiveModelSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ActiveModel
         fields=('id','activeName','pictureUrl','linkUrl')
+
+class AreaCommodModelSerializer(serializers.HyperlinkedModelSerializer):
+    area = AreaModelSerializer()
+    commodity= CommodityModelSerializer()
+    class Meta:
+        model = Area_commodityModel
+        fields=('id','area','commodity')
+
 

@@ -36,6 +36,15 @@ class AreaModelView(APIView):
         return Response({
             'data':serializer.data})
 
+class AreaCommodModelView(APIView):
+
+    def get(self,request):
+        cid=request.GET.get('id')
+        datas = AreaModel.objects.get(pk=cid)
+        serializer=AreaModelSerializer(datas,many=True)
+        return Response({
+            'data':serializer.data})
+
 class ActiveModelView(APIView):
     def get(self,request):
         datas = ActiveModel.objects.all()

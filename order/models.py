@@ -4,6 +4,8 @@ from django.db.models import Q
 from common import YGBaseModel
 
 # Create your models here.
+from goods.models import CommodityModel
+
 
 class CityModel(YGBaseModel):
     cityName = models.CharField(max_length=20,
@@ -29,6 +31,15 @@ class AreaModel(YGBaseModel):
     class Meta:
         db_table = 't_area'
         verbose_name_plural = verbose_name = '地区'
+
+class Area_commodityModel(YGBaseModel):
+    area = models.ForeignKey(AreaModel,verbose_name='地区',related_name='area',on_delete=models.SET_NULL,
+                             null=True,blank=True)
+    commodity = models.ForeignKey(CommodityModel,verbose_name='商品',related_name='commodity',on_delete=models.SET_NULL,
+                                  null=True,blank=True)
+    class Meta:
+        db_table='t_area_commodity'
+        verbose_name_plural=verbose_name = '地区商品'
 
 
 class OrederManager(models.Manager):

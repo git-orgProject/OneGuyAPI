@@ -33,6 +33,9 @@ class CityTestCase(TestCase):
         print('--当前区县--%s'% area['AreaName'] )
         self.area_id = area['id']
 
+    def test_03_commodity(self):
+        url =
+
 if __name__ == '__main__':
     unittest.main()
 

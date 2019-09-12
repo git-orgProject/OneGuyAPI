@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from order.models import CityModel, AreaModel,OrderModel
+from order.models import CityModel, AreaModel, OrderModel, Area_commodityModel
 
 
 class CityAdmin(admin.ModelAdmin):
@@ -9,6 +9,9 @@ class CityAdmin(admin.ModelAdmin):
 
 class AreaAdmin(admin.ModelAdmin):
     list_display = ('AreaName','city')
+
+class AreaCommoAdmin(admin.ModelAdmin):
+    pass
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('title', 'create_time', 'total', 'pay_type','status', 'receiver','receiver_phone', 'receiver_address' )
@@ -18,3 +21,4 @@ class OrderAdmin(admin.ModelAdmin):
 admin.site.register(CityModel,CityAdmin)
 admin.site.register(AreaModel,AreaAdmin)
 admin.site.register(OrderModel,OrderAdmin)
+admin.site.register(Area_commodityModel,AreaCommoAdmin)
