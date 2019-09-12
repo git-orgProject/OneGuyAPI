@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}主页{% endblock %}
+
+
+{% block content %}
+    <ul>
+        {% for data_1  in data %}
+            <li><button onclick="show()">{{ data_1.name }}</button></li>
+        {% endfor %}
+    </ul>
+    <script>
+    function show() {
+        fetch(){}
+
+
+    }
+
+    </script>
+
+{% endblock %}

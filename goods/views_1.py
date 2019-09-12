@@ -1,5 +1,7 @@
 import json
 
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from rest_framework import status
 from django.views import View
@@ -16,9 +18,6 @@ class FirstCategoryView(View):
     def get(self, request):
         category_all = CategoryModel.objects.all().filter(grade=1)
         ser = CategorySerializer(category_all, many=True)
-
-        # print(ser.data,type(ser.data))
-
         return JsonResponse({'data': ser.data})
 
 class SecondCategoryView(View):
@@ -37,6 +36,15 @@ class CouponView(View):
         # coupon_all=CouponModel.objects.filter(userId=userid).all()
         s=CouponSerializer(coupon_all,many=True)
         return JsonResponse({"data":s.data})
+
+@csrf_exempt
+def product_category_list(request):
+    data1=CategoryModel.objects.filter(grade=1).all()
+    s = CategorySerializer(data1, many=True)
+
+
+    return render(request, 'category/category_list.html', {"data":s.data})
+
 
 
 
