@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'cart',
     'activity',
     'rest_framework',
+    'captcha',
 ]
 
 MIDDLEWARE = [

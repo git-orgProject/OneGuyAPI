@@ -1,0 +1,76 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'login/css/login.css' %}" rel="stylesheet"/>
+    <title>登录</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="col">
+          <form class="form-login" action="/user/login/" method="post">
+
+              {% if login_form.captcha.errors %}
+                <div class="alert alert-warning">{{ login_form.captcha.errors }}</div>
+              {% elif message %}
+                  <div class="alert alert-warning">{{ message }}</div>
+              {% endif %}
+
+              {% csrf_token %}
+
+               <div class="form-group">
+                   {{ login_form.user_name }}
+               </div>
+
+                <div class="form-group">
+                    {{ login_form.password }}
+                </div>
+
+                <div class="form-group">
+                    {{ login_form.captcha }}
+                </div>
+
+                <div class="form-group">
+                <a onclick="alert('滚！')" class="text-success "><ins>忘记密码?</ins></a><br>
+                <div>
+
+                  <div style="float:left">
+                      <a >
+                          <button type="submit"
+                                  style="background-color: #3c763d;
+                                  height: 40px;
+                                  width: 100px;
+                                  border: #3c763d;
+                                  border-radius: 5px">
+                              <span style="color: white">登录</span>
+                          </button>
+                      </a>
+                  </div>
+
+                  <div style="float:right;margin-top: -57px" >
+                      <a href="/user/register/">
+                          <button type="button"
+                                  style="background-color: white;
+                                  height: 40px;
+                                  width: 100px;
+                                  border: 1px green solid;
+                                  border-radius: 5px">
+                              <span style="color: green">立即注册</span>
+                          </button>
+                      </a>
+                  </div>
+          <form/>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.15.0/umd/popper.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

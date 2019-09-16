@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.views import View
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from api.commodity import CommodityModelSerializer
@@ -10,14 +9,14 @@ class CommodityViewALL(APIView):  #所有商品信息
     def get(self,request):
         datas = CommodityModel.objects.all()
         serializer = CommodityModelSerializer(datas, many=True) #序列化类
-        return Response({'data': serializer.data})
+        return Response(serializer.data)
 
 class CommodityViewPK(APIView):   #通过商品id来获取商品信息
     def get(self,request):
         pid=request.GET.get('id')
         datas = CommodityModel.objects.filter(id=pid).all()
         serializer = CommodityModelSerializer(datas, many=True) #序列化类
-        return Response({'data':serializer.data})
+        return Response(serializer.data)
 
 
 # class CommodityViewFK(APIView):  #通过商品类型获取商品信息

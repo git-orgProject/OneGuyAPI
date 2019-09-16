@@ -11,7 +11,7 @@ class AreaAdmin(admin.ModelAdmin):
     list_display = ('AreaName','city')
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('title', 'create_time', 'total', 'pay_type','status', 'receiver','receiver_phone', 'receiver_address' )
+    list_display = ('title',  'total', 'pay_type','status', 'receiver','receiver_phone', 'receiver_address' )
 
 
 
