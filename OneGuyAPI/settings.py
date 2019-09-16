@@ -147,9 +147,49 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        'django_filters.rest_framework.DjangoFilterBackend',
     ]
 }
 
+#  缓存
+CACHES = {
+    'default': {
+        "cart": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": "redis://127.0.0.1:6379/4",
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            }
+        },
+    }
+}
+
+CORS_ORIGIN_ALLOW_ALL = True   # 允许所有的源
+CORS_ALLOW_CREDENTIALS = True   # 允许携带cookie访问
+
+# 跨域允许的请求方式(可选)
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+# 跨域允许的头部参数(可选)
+CORS_ALLOW_HEADERS = (
+    'XMLHttpRequest',
+    'X_FILENAME',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'Pragma',
+)
 
 
 

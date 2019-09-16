@@ -3,7 +3,10 @@ from django.shortcuts import render
 # Create your views here.
 
 def cartshow(request):
-    return render(request, 'cart/shopcart.html')# from django.template.loader import get_template
+    return render(request, 'cart/shopcart.html')
+
+
+# from django.template.loader import get_template
 # from django_redis import get_redis_connection
 # from rest_framework.views import APIView
 #
