@@ -19,10 +19,6 @@ class CityTestCase(TestCase):
         test_data['city_id'] = city['id']
         print('--当前城市--%s'%  city['cityName'])
 
-
-
-
-
     def test_02_city_area(self):
         url = 'http://localhost:8000/active/area'
 
@@ -61,17 +57,18 @@ class CityTestCase(TestCase):
         for nav in nav_list:
             print(nav)
 
+    def test_06_active(self):
+        url = 'http://localhost:8000/active/address/'
+        resp = requests.post(url,data={
+            'id':'7809878757',
+            "privName": "陕西省",
+            "cityName": "西安市",
+            "streetName": "高新路",
+            "specify": "高新科技"
+        })
+        addr_list = resp.json
+        print('----添加成功----')
+
 
 if __name__ == '__main__':
     unittest.main()
-
-# if __name__ == '__main__':
-#     suitel = unittest.TestSuite()
-#     suitel.addTest(CityTestCase.test_dll_city)
-#
-#     suite2 = unittest.TestSuite()
-#     suitel.addTest(CityTestCase.test_css_city)
-#
-#     all_suite = unittest.TestSuite((suitel,suite2))
-#
-#     unittest.TextTestRunner().run(all_suite)

@@ -21,6 +21,22 @@ class CityModel(YGBaseModel):
         db_table = 't_city'
         verbose_name_plural = verbose_name = '城市'
 
+
+
+class AddressModel(YGBaseModel):
+    privName = models.CharField(max_length=20,
+                                verbose_name='省份')
+    cityName = models.CharField(max_length=20,
+                                verbose_name='城市')
+    streetName = models.CharField(max_length=20,
+                                  verbose_name='街道')
+    specify = models.CharField(max_length=50,
+                                  verbose_name='详细地址')
+
+    class Meta:
+        db_table = 't_address'
+        verbose_name_plural = verbose_name = '收货地址'
+
 class AreaModel(YGBaseModel):
     AreaName = models.CharField(max_length=20,verbose_name='地区名')
     city = models.ForeignKey(CityModel,related_name='area',

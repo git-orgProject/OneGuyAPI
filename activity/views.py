@@ -3,13 +3,14 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from activity.models import NavlistModel, ActiveModel
-from order.models import CityModel, AreaModel
+from order.models import CityModel, AreaModel, AddressModel
 from api.active import CityModelSerializer, navModelSerializer, AreaModelSerializer, ActiveModelSerializer, \
-    AreaCommodModelSerializer
+    AreaCommodModelSerializer, AddressModelSerializer
 
 
 class CityView(APIView):
@@ -45,6 +46,29 @@ class AreaModelView(APIView):
             'data':serializer.data,
             'code':200})
 
+class AddressModelView(APIView):
+    def get(self,request):
+        cid=request.GET.get('id')
+        datas = AddressModel.objects.get(pk=cid)
+        serializer=AddressModelSerializer(datas)
+        return JsonResponse({
+            'data':serializer.data,
+            'code':200})
+    def post(self,request):
+        serializer = AddressModelSerializer(data=request.data)
+        print(request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse({
+                'data':serializer.instance,
+                'code':200
+            })
+        else:
+            return JsonResponse({'data':serializer.errors,
+                             'code':400
+                            })
+
+
 class AreaCommodModelView(APIView):
 
     def get(self,request):
@@ -58,18 +82,11 @@ class ActiveModelView(APIView):
     def get(self,request):
         datas = ActiveModel.objects.all()
         serializer=ActiveModelSerializer(datas,many=True)
-        # response["Access-Control-Allow-Origin"] = "*"
-        # response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
-        # response["Access-Control-Max-Age"] = "1000"
-        # response["Access-Control-Allow-Headers"] = "*"
         return Response({
             'data':serializer.data,
             'code':200
         })
 
-
-def first_page(request):
-    return redirect('test.html')
 
 
 

@@ -18,6 +18,7 @@ from django.conf.urls.static import static
 from django.urls import path, include
 from api import api_router
 from OneGuyAPI import settings, mail
+from user import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),

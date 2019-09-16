@@ -14,7 +14,10 @@ class AreaCommoAdmin(admin.ModelAdmin):
     list_display = ('area_id','commodity_id','cityname','commodityname')
     list_filter = ('area_id',)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('title', 'create_time', 'total', 'pay_type','status', 'receiver','receiver_phone', 'receiver_address' )
+    list_display = ('title',  'total', 'pay_type','status', 'receiver','receiver_phone', 'receiver_address' )
+
+class AddressAdmin(admin.ModelAdmin):
+    list_display = ('privName',  'cityName', 'streetName','specify')
 
 
 

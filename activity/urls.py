@@ -1,6 +1,6 @@
 from django.urls import path
 
-from activity.views import CityView, NavlistView, AreaModelView, ActiveModelView, AreaCommodModelView, first_page
+from activity.views import CityView, NavlistView, AreaModelView, ActiveModelView, AreaCommodModelView, AddressModelView
 
 app_name = 'activity'
 
@@ -10,5 +10,5 @@ urlpatterns = [
     path('area/', AreaModelView.as_view(), name='area'),
     path('act/', ActiveModelView.as_view(), name='act'),
     path('area/commod/', AreaCommodModelView.as_view(), name='area_commod'),
-    path('page/',first_page, name='page'),
+    path('address/',AddressModelView.as_view(), name='address'),
 ]

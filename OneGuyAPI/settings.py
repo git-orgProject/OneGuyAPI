@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'activity',
     'rest_framework',
     'corsheaders',
+    'captcha',
+
 ]
 
 MIDDLEWARE = [

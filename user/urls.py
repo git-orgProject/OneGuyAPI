@@ -1,11 +1,14 @@
-from django.urls import path
-from django.views.decorators.csrf import csrf_exempt
-
-from user.views import UserView
+from django.urls import path,include
+from user import views
 
 app_name = 'user'
 
 
 urlpatterns = [
-    path('login/', csrf_exempt(UserView.as_view())),
+    path('index/', views.index),
+    path('login/', views.login),
+    path('register/', views.register),
+    path('logout/', views.logout),
+    path('captcha/',include('captcha.urls'))
+
 ]
