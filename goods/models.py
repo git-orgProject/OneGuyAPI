@@ -62,7 +62,7 @@ class CouponModel(models.Model):
     couponCode=models.CharField(primary_key=True,
                                 max_length=20,
                                 verbose_name='优惠券号')
-    userId=models.ForeignKey(UserModel,
+    user=models.ForeignKey(UserModel,
                              verbose_name='用户id',
                              on_delete=models.SET_NULL,
                              blank=True,

@@ -25,11 +25,11 @@ class UserTestCase(TestCase):
         print(category_list)
 
     def test_03_coupon(self):
-        url = 'http://localhost:8000/goods/coupon/4'
+        url = 'http://localhost:8000/goods/coupon/1'
         resp = requests.get(url)
 
-        category_list = resp.json().get('data')
-        print(category_list)
+        coupon_list = resp.json().get('data')
+        print(coupon_list)
 
     def test_04_search(self):
         url = 'http://localhost:8000/goods/search'
