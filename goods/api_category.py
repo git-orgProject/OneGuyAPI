@@ -16,7 +16,7 @@ class CategoryAPIView(APIView):
         datas = CouponModel.objects.all()
         serializer = CategorySerializer(datas, many=True)
 
-        return Response(serializer.data)
+        return Response(serializer.data,status=status.HTTP_204_NO_CONTENT)
 
     def post(self, request):
         serializer = CategorySerializer(data=request.data)
