@@ -1,101 +1,91 @@
-from django.http import JsonResponse, HttpResponse
-from rest_framework.utils import json
+from django.shortcuts import render,redirect
+from . import models
+from . import forms
+import hashlib
 
-from rest_framework.views import APIView
+def hash_code(s,salt='user'):
+    h = hashlib.sha256()
+    s += salt
+    h.update(s.encode())  #update方法只接收bytes类型
+    return h.hexdigest()
 
-from api import UserSerializer
-from .models import UserModel
+def index(request):
+    if not request.session.get('is_login',None):
+        return redirect('/user/login/')
+    return render(request,'login/index.html')
 
-class UserView(APIView):
-    def login(self,request):
-        user_name = request.data.get('username')
-        password = request.data.get('password')
+def login(request):
+    if request.session.get('is_login',None):    #不允许重复登录
+        return redirect('/user/index')
+    if request.method == 'POST':
+        login_form = forms.UserForm(request.POST)
+        message = "请检查填写的内容!"
+        if login_form.is_valid():
+            username = login_form.cleaned_data.get('username')
+            password = login_form.cleaned_data.get('password')
 
-        if not all((user_name,password)):
-            return JsonResponse({
-                'code':100,
-                'mag':'用户名或口令不能为空'
-            })
-        else:
-            qs = UserModel.objects.filter(user_name=user_name)
-            if qs.exists():
-                login_user = qs.first()
-                if login_user.password == password:
-                    info = UserSerializer(login_user,many=False).data
-                    return JsonResponse({
-                        'code':200,
-                        'data':{
-                            'user_id':login_user.id,
-                            'phone':login_user.phone
-                        }
-                    })
-                return JsonResponse({
-                    'code':102,
-                    'msg':'用户名或口令不正确，请重试'
-                })
+            try:
+                user = models.UserModel.objects.get(name=username)
+            except:
+                message = '用户不存在!'
+                return render(request, 'login/login.html', locals())
+
+            if user.password == password:
+                request.session['is_login'] = True   #写入用户状态和数据
+                request.session['user_id'] = user.id
+                request.session['user_name'] = user.user_name
+                return redirect('/user/index/')
             else:
-                return JsonResponse({
-                    'code':101,
-                    'msg':'用户不存在'
-                })
-
-    def regist(self,request):
-        resp1 = HttpResponse(content='您好'.encode('utf-8'),
-                             status=200,
-                             content_type='text/html;charset=utf-8')
-
-        with open('images/fz.jpg', 'rb') as f:
-            bytes = f.read()
-
-        # 响应图片数据
-        resp2 = HttpResponse(content=bytes)
-        # ?? 响应头如何设置
-        resp2['Content-Type'] = 'image/jpg'
-
-        # 响应json数据
-        data = {'name': 'fz', 'age': 20}
-
-        resp3 = HttpResponse(content=json.dumps(data),
-                             content_type='application/json')
-
-        resp4 = JsonResponse(data)
-
-        return resp2
-
-    def get(self,request):
-        id = request.GET.get('id',None)
-        if not id:
-            return JsonResponse({
-                'code':100,
-                'msg':'必须提供id参数'
-            })
-        try:
-            login_user = UserModel.objects.get(pk=id)
-            return JsonResponse({
-                'code':200,
-                'data':UserSerializer(login_user).data
-            })
-        except:
-            return JsonResponse({
-                'code':101,
-                'msg':'用户不存在'
-            })
-
-    def post(self,request):
-
-        action = request.GET.get('action')
-        if action == 'login':
-            return self.login(request)
-        elif action == 'regist':
-            return self.regist(request)
+                message = '密码不正确!'
+                return render(request, 'login/login.html', locals())
         else:
-            return JsonResponse({
-                'msg':'请求无效 请确定是否action参数'
-            })
-    def put(self, request):
-        # 修改用户信息（头像、口令、激活）
-        pass
+            return render(request, 'login/login.html',locals())
 
-    def delete(self, request):
-        # 注销用户
-        pass
+    login_form = forms.UserForm()
+    return render(request, 'login/login.html',locals())
+
+def register(request):
+    if request.session.get('is_login', None):
+        return redirect('/user/index/')
+
+    if request.method == 'POST':
+        register_form = forms.RegisterForm(request.POST)
+        message = "请检查填写的内容！"
+        if register_form.is_valid():
+            username = register_form.cleaned_data.get('username')
+            password1 = register_form.cleaned_data.get('password1')
+            password2 = register_form.cleaned_data.get('password2')
+            sex = register_form.cleaned_data.get('sex')
+
+            if password1 != password2:
+                message = '两次输入的密码不同！'
+                return render(request, 'login/register.html', locals())
+            else:
+                same_name_user = models.UserModel.objects.filter(name=username)
+                if same_name_user:
+                    message = '用户名已经存在'
+                    return render(request, 'login/register.html', locals())
+
+
+                new_user = models.UserModel()
+                new_user.user_name = username
+                new_user.password = hash_code(password1)
+                new_user.sex = sex
+                new_user.save()
+
+                return redirect('/user/login/')
+        else:
+            return render(request, 'login/register.html', locals())
+    register_form = forms.RegisterForm()
+    return render(request, 'login/register.html', locals())
+
+def logout(request):
+    if not request.session.get('is_login',None):
+        #如果本来就未登录，也就没有登出一说
+        return redirect("/user/login")
+    request.session.flush()
+
+    return redirect("/user/login/")
+
+
+
