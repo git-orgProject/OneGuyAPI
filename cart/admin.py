@@ -5,7 +5,7 @@ from cart.models import CartModel, CommodityCart
 
 
 class CartModelAdmin(admin.ModelAdmin):
-    list_display = ('user_id', 'user_state')
+    list_display = ('user', 'user_state')
 
 
 class CommodityCartAdmin(admin.ModelAdmin):
