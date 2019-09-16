@@ -1,5 +1,6 @@
 import json
 
+from django.db.models import Q
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
@@ -79,6 +80,27 @@ def product_category_list(request):
     # print(l1)
 
     return render(request, 'category/category_list.html', {"data": l1})
+
+class SearchView(View):
+    def get(self,request):
+        wd = request.GET.get('wd')
+        info = CategoryModel.objects.all().filter(Q(name__contains=wd) | Q(code__contains=wd))
+
+        s = CategorySerializer(info, many=True)
+        if info:
+            data = {
+
+                "code": 200,
+                "msg": "ok",
+                "data": {
+                    "datas": s.data,},
+                    }
+
+            return JsonResponse({"data": data})
+        else:
+            data = {'code': 404, 'msg': 'not found'}
+
+            return JsonResponse({"data": data})
 
     # [{'id': '1e17a99d-ca4b-49be-908b-93c8faa20baf', 'name': '国产水果', 'parent_id': '00000000-0000-0000-0000-000000000000',
     #   'child': [{'id': '04b4701e-2f3a-49b6-98ea-b5f2bf897fc1', 'name': '李',
