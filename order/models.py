@@ -37,6 +37,14 @@ class Area_commodityModel(YGBaseModel):
                              null=True,blank=True)
     commodity = models.ForeignKey(CommodityModel,verbose_name='商品',related_name='commodity',on_delete=models.SET_NULL,
                                   null=True,blank=True)
+    @property
+    def cityname(self):
+        return  AreaModel.objects.get(pk=self.area_id).AreaName
+
+    @property
+    def commodityname(self):
+        return CommodityModel.objects.get(pk=self.commodity_id).commodityName
+
     class Meta:
         db_table='t_area_commodity'
         verbose_name_plural=verbose_name = '地区商品'

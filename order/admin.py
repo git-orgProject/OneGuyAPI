@@ -11,8 +11,8 @@ class AreaAdmin(admin.ModelAdmin):
     list_display = ('AreaName','city')
 
 class AreaCommoAdmin(admin.ModelAdmin):
-    pass
-
+    list_display = ('area_id','commodity_id','cityname','commodityname')
+    list_filter = ('area_id',)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('title', 'create_time', 'total', 'pay_type','status', 'receiver','receiver_phone', 'receiver_address' )
 

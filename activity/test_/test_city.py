@@ -9,6 +9,7 @@ test_data = {
 
 class CityTestCase(TestCase):
 
+
     def test_01_city(self):
         url = 'http://localhost:8000/active/city'
         resp = requests.get(url)
@@ -31,10 +32,35 @@ class CityTestCase(TestCase):
         area_list = resp.json().get('data')
         area = random.choice(area_list)
         print('--当前区县--%s'% area['AreaName'] )
-        self.area_id = area['id']
+        # self.area_id = area['id']
+        test_data['area_id'] = area['id']
+        print(test_data['area_id'])
 
     def test_03_commodity(self):
-        url =
+        url = 'http://localhost:8000/active/area/commod'
+        print(test_data['area_id'])
+        resp = requests.get(url, {
+            'id': test_data['area_id']
+        })
+        commod_list = resp.json().get('data')
+        for i  in commod_list:
+            print(i['commodity']['commodityName'])
+
+
+    def test_04_active(self):
+        url = 'http://localhost:8000/active/act'
+        resp = requests.get(url)
+        act_list = resp.json().get('data')
+        for act in act_list:
+            print(act)
+
+    def test_05_active(self):
+        url = 'http://localhost:8000/active/nav'
+        resp = requests.get(url)
+        nav_list = resp.json().get('data')
+        for nav in nav_list:
+            print(nav)
+
 
 if __name__ == '__main__':
     unittest.main()

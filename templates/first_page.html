@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/swiper.min.css">
+
+
+</head>
+<body>
+<div class="container">
+    <div class="row" style="background-color:lightblue;height: 80px">
+        <div class="col-xs-4">
+            <a href="#"></a>
+        </div>
+        <div class="col-xs-8">
+            <input type="text">
+        </div>
+    </div>
+    <div class="row" style="background-color:red;height: 400px">
+        <div class="col-xs-12"></div>
+    </div>
+    <div class="row" id="active" >
+        <div class="col-xs-3" style="height: 40px" v-for="i in acti">
+             <img src="{{ i.pictureUrl }}"/>
+
+            {{ i.activeName }}
+        </div>
+    </div>
+
+
+</div>
+<div class="container" style="background-color:whitesmoke;height: 50px;text-align: center;font-size: 2rem">
+    <div class="col-xs-3">
+        首页
+    </div>
+    <div class="col-xs-3">
+        分类
+    </div>
+    <div class="col-xs-3">
+        购物车
+    </div>
+    <div class="col-xs-3">
+        个人中心
+    </div>
+</div>
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/vue.min.js"></script>
+
+<script>
+    url='http://localhost:8000/active/act/'
+
+    $(document).ready(function()
+{
+fetch(url, {
+            method: 'get',
+                mode: 'cors',
+                headers:{
+                   'Content-Type': 'application/json'
+                }
+        }).then(data => ss=data.json()).then(res=> {var actives  =res.data
+        console.log(actives)
+        var vm = new Vue({
+            el:'#active',
+            data:{
+                acti:actives,
+                msg:'hello'
+            },
+        })})
+
+})
+
+
+</script>
+</body>
+</html>
+
+
+

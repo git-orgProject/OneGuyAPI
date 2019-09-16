@@ -1,0 +1,75 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+/*整体效果设置*/
+#box{
+	width: 90%;
+	height: 360px;
+	
+	/*background-color: red;*/
+	
+	margin: 10px auto;
+	
+	position: relative;
+}
+
+/*设置图片*/
+#pic{
+	position: absolute;
+	
+	width: 100%;
+	height: 100%;
+	
+	left: 0px;
+	top: 0px;
+}
+
+/*数字列表*/
+#list{
+	list-style: none;
+	position: absolute;
+	left:40% ;
+	height: 30px;
+	/* background-color: aliceblue; */
+	bottom: 5px;
+
+}
+/*让小圆点横向排列*/
+#list li{
+	float: left;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background-color: whitesmoke;
+	font-size: 12px;
+	text-align: center;
+	line-height: 15px;
+	margin-left: 10px;
+}
+
+/*左右按钮*/
+.btn{
+	width: 50px;
+	height: 80px;
+	background-color: rgba(0,0,0,0.2);
+	color: #fff;
+	font-size: 30px;
+	text-align: center;
+	line-height: 80px;
+	
+	position: absolute;
+	top: 140px;
+	
+	display: none;
+}
+
+#left{
+	left:0px;
+}
+
+#right{
+	right: 0px;
+}
+
