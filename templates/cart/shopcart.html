@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+    {% block css %}
+        <link rel="stylesheet" href="shopcart.css">
+    {% endblock %}
+    {% block content %}
+        <div id="cart" class="container-fluid">
+
+		<!-- 商品添加栏 -->
+		<div class="row">
+			<div id="goods">
+				<div class="choice col-xs-1">
+					<img src="https://img06.yiguoimg.com/d/web/180119/01641/141347/check1.png" >
+				</div>
+				<div class="goods-img col-xs-1">
+					<img src="https://img13.yiguoimg.com/d/items/2019/190723/9288738593810167_300.jpg" >
+				</div>
+				<div class="text col-xs-5 col-xs-offset-2">
+					<h2>南非葡萄柚礼盒装4个280g以上/个</h2>
+					<div class="tag">
+						<!-- 预留位置 -->
+					</div>
+					<p><strong>￥<b>50.00</b></strong></p>
+				</div>
+				<div class="col-xs-3">
+					<div class="del">
+						<img src="https://img07.yiguoimg.com/d/web/180119/01642/141511/del.png" >
+					</div>
+
+					<div class="num ">
+						<span class="cut">-</span>
+						<span class="input">0</span>
+						<span class="add">+</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 猜你喜欢 -->
+		<div id="guess" class="row">
+
+		</div>
+		<!-- 去结算 -->
+		<div id="cart-total" class="row">
+			<div class="choice-all col-xs-2">
+				<img src="https://img06.yiguoimg.com/d/web/180119/01641/141347/check1.png" title="全选">
+				<h5>全选</h5>
+			</div>
+
+			<div class="total col-xs-4 col-xs-offset-2" >
+				<p>合计(不含运费)：
+				<strong>￥0.00</strong></p>
+				<span>已优惠: ￥0.00</span>
+			</div>
+			<div class="btn col-xs-3 col-xs-offset-1">
+				<a href="">去结算(0)</a>
+			</div>
+		</div>
+
+		<!-- 底部导航栏 -->
+		<div id="nav" class="row">
+			<div id="home" class="col-xs-3">
+				<div align="center">
+					<img src="https://img05.yiguoimg.com/e/web/170110/00583/164146/nav_home_selected.png" >
+				</div>
+				<a href="">首页</a>
+			</div>
+			<div id="category" class="col-xs-3">
+				<div align="center">
+					<img src="https://img07.yiguoimg.com/d/web/180508/01315/170504/nav_classify.png" >
+				</div>
+				<a href="">分类</a>
+			</div>
+			<div id="shopcart" class="col-xs-3">
+				<div align="center">
+					<img src="https://img05.yiguoimg.com/e/web/170110/00583/164146/nav_list.png">
+				</div>
+				<a href="">购物车</a>
+			</div>
+			<div id="myego" class="col-xs-3">
+				<div align="center">
+					<img src="https://img07.yiguoimg.com/e/web/170110/00583/164146/nav_user.png" >
+				</div>
+				<a href="">我的易果</a>
+			</div>
+		</div>
+
+	</div>
+    {% endblock %}
