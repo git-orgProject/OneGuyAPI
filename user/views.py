@@ -16,6 +16,7 @@ def hash_code(s,salt='user'):
     return h.hexdigest()
 
 def index(request):
+
     if not request.session.get('is_login',None):
         return redirect('/user/login/')
     return render(request,'login/index.html')

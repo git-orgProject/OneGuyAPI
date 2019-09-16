@@ -3,7 +3,7 @@ from captcha.fields import CaptchaField
 
 class UserForm(forms.Form):
     user_name = forms.CharField(max_length=128,
-                                widget=forms.TextInput(attrs={'class':'form-control','placeholder':"请输入您的用户名",'autofocus':''}))
+                                widget=forms.TextInput(attrs={'class':'form-control','placeholder':"请输入您的用户名",}))
     password = forms.CharField(max_length=256,
                                widget=forms.PasswordInput(attrs={'class':'form-control','placeholder':"请输入您的密码"}))
     # captcha = CaptchaField(widget=forms.TextInput(attrs={'class':'form-control','placeholder':"请输入验证码"}))

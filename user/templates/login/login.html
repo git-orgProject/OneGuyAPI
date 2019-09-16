@@ -21,7 +21,7 @@
 {#              {% endif %}#}
 
               {% csrf_token %}
-
+                {##跨站请求伪造 如果不加 请求会被中断#}
                <div class="form-group">
                    {{ login_form.user_name }}
                </div>

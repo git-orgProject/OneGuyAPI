@@ -31,7 +31,7 @@ class AreaModel(YGBaseModel):
         verbose_name_plural = verbose_name = '地区'
 
 
-class OrederManager(models.Manager):
+class OrederManager(models.Manager):  #重写get_queryset方法
     def get_queryset(self):
         return super().get_queryset().filter(~Q(status=5))
 
