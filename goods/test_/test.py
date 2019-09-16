@@ -23,7 +23,12 @@ class UserTestCase(TestCase):
 
         category_list1 = resp.json().get('data')
         print(category_list1)
+    def test_03_category(self):
+        url = 'http://localhost:8000/goods/category_list'
+        resp = requests.get(url)
 
+        category_list = resp.json().get('data')
+        print(category_list)
 
 if __name__ == '__main__':
     unittest.main()
