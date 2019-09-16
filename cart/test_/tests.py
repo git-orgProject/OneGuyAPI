@@ -8,7 +8,6 @@ test_data = {
 
 }
 
-
 class ShopCartTest(TestCase):
     def test_all_users(self):
         url = 'http://127.0.0.1:8000/api/cart/?format=json'
@@ -21,6 +20,10 @@ class ShopCartTest(TestCase):
         resp = requests.get(url)
         cart_list = resp.json()
         print(cart_list)
+        cart_random = random.choice(cart_list)
+
+        print(cart_random['cart']['user'],
+                cart_random['commondity'])
 
 
 if __name__ == '__main__':
