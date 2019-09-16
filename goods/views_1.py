@@ -30,6 +30,28 @@ class SecondCategoryView(View):
         return JsonResponse({'data': ser.data})
 
 
+
+class Category_list(View):
+    def get(self, request, ):
+        data_1 = CategoryModel.objects.filter(grade=1).all()
+        # s = CategorySerializer(data1, many=True)
+        data_2 = CategoryModel.objects.filter(grade=2).all()
+
+        l1 = []
+        l2 = []
+        for i in data_1:
+            l1.append(
+                {"id": i.id, "name": i.name, "picture_url": i.picture_url, "code": i.code, 'parent_id': i.parent_id,
+                 "child": []})
+        for j in data_2:
+            l2.append(
+                {"id": j.id, "name": j.name, "picture_url": j.picture_url, "code": j.code, 'parent_id': j.parent_id})
+        for ll1 in l1:
+            for ll2 in l2:
+                if ll1["id"] == ll2["parent_id"]:
+                    ll1["child"].append(ll2)
+        return JsonResponse({"data": l1})
+
 class CouponView(View):
     def get(self, request, userid):
         coupon_all = request.GET.get(userid, None)
