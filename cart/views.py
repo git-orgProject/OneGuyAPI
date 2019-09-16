@@ -1,9 +1,32 @@
+from rest_framework import status
 from django.shortcuts import render
 
 # Create your views here.
+from rest_framework.decorators import api_view
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from api.cart import CartSerializer
+from cart.models import CartModel
 
-def cartshow(request):
-    return render(request, 'cart/shopcart.html')
+
+class CartAPIView(APIView):
+    def get(self, request):
+        datas = CartModel.objects.all()
+        serializer = CartSerializer(datas, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        serializer = CartSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.instance)
+        else:
+            return Response(serializer.errors,
+                            status=status.HTTP_400_BAD_REQUEST)
+
+
+
 
 
 # from django.template.loader import get_template
@@ -169,7 +192,7 @@ def cartshow(request):
 #     pass
 
 # 1.先从cookie中，获取当前商品的购物车记录 (cart_json)
-# 2.判断购物车(cart_json)数据是否存在，有可能用户从来没有操作过购物车
+# 2.判断购物车(cart_json)数据是否存在
 #     2.1.如果(cart_json)存在就把它转成字典(cart_dict)
 #     2.2.如果(cart_json)不存在就定义空字典(cart_dict)
 # 3.判断要添加的商品在购物车中是否存在
@@ -179,3 +202,5 @@ def cartshow(request):
 # 5.创建JsonResponse对象，该对象就是要响应的对象
 # 6.在响应前，设置cookie信息
 # 7.计算购物车数量总和，方便前端展示
+def cartshow(request):
+    return render(request, 'cart/shopcart.html')
