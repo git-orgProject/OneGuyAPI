@@ -5,6 +5,7 @@ from goods.models import CategoryModel
 
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
         model = CategoryModel
         fields = ('id','code', 'name', 'grade','picture_url','parent_id')

@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 from common import YGBaseModel
 from user.models import UserModel
 

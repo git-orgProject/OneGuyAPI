@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block css %}
+<style>
+    *{
+        padding:0;
+        margin:0;
+    }
+    .title{
+        font: 20.6px Avenir,'PingFang SC',微软雅黑;
+        color: #11B57C;
+    }
+    img{
+        hight:179.36px;
+        width: 179.36px;
+    }
+    a{
+        font-size:30px;
+        color: #11B57C;
+    }
+    a:hover{
+        text-decoration:none;
+    }
+</style>
+{% endblock %}
+
+{% block title %}全部商品{% endblock %}
+
+{% block content %}
+<div class="page-header row title">
+  <div  class="col-xs-6 col-md-4 text-center">销量</div>
+  <div  class="col-xs-6 col-md-4 text-center">新品</div>
+  <div  class="col-xs-6 col-md-4 text-center">
+      <span>价格</span>
+      <span class="glyphicon glyphicon-triangle-top" ></span>
+      <span class="glyphicon glyphicon-triangle-bottom"></span>
+  </div>
+
+</div>
+ {% for data in datas %}
+<div class="row page-header">
+
+    <div class="col-xs-6 col-md-8" ><img src={{ data.smallPicture }}></div>
+    <div class="col-xs-6 col-md-4" >
+
+        <p style="color: #333333;font: 28.44px Avenir,'PingFang SC',微软雅黑">{{ data.commodityName }}</p>
+        <p style="color: #080808;font: 22.26px Avenir,'PingFang SC',微软雅黑;padding:18.55px 0">{{ data.subTitle }}</p>
+        <span style="color: #FD3D3D;font: 28.44px Avenir,'PingFang SC',微软雅黑;padding-right:27.8px">{{ data.sellPrice }}</span>
+        <span style="color: #080808;font: 21.02px Avenir,'PingFang SC',微软雅黑;padding-right:12.37px">{{ data.spec }}</span>
+
+        <span style="padding-left:80px"><a href="#" ><b>+</b></a></span>
+    </div>
+</div>
+    {% endfor %}
+
+{% endblock %}
