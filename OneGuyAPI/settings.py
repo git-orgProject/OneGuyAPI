@@ -152,17 +152,17 @@ REST_FRAMEWORK = {
 }
 
 #  缓存
-CACHES = {
-    'default': {
-        "cart": {
-            "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": "redis://127.0.0.1:6379/4",
-            "OPTIONS": {
-                "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            }
-        },
-    }
-}
+# CACHES = {
+#     'default': {
+#         "cart": {
+#             "BACKEND": "django_redis.cache.RedisCache",
+#             "LOCATION": "redis://127.0.0.1:6379/4",
+#             "OPTIONS": {
+#                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#             }
+#         },
+#     }
+# }
 
 CORS_ORIGIN_ALLOW_ALL = True   # 允许所有的源
 CORS_ALLOW_CREDENTIALS = True   # 允许携带cookie访问
