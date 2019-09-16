@@ -34,6 +34,13 @@ class UserTestCase(TestCase):
 
         category_list = resp.json().get('data')
         print(category_list)
+    def test_04_search(self):
+        url = 'http://localhost:8000/goods/search'
+        resp = requests.get(url,params={"wd":"李"})
+
+        search_list = resp.json().get('data')
+        print(search_list)
+
 
 if __name__ == '__main__':
     unittest.main()
