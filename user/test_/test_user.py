@@ -14,7 +14,7 @@ class UserTestCase(TestCase):
     def test_all_user(self):
         url = 'http://localhost:8000/user/login/?action=login'
         resp = requests.post(url,{
-            'username':'哈哈哈哈哈',
+            'username':'哔哩哔哩',
             'password':'123456',
         })
         user_list = resp.json()
