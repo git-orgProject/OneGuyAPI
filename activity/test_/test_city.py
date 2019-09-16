@@ -9,6 +9,7 @@ test_data = {
 
 class CityTestCase(TestCase):
 
+
     def test_01_city(self):
         url = 'http://localhost:8000/active/city'
         resp = requests.get(url)
@@ -17,10 +18,6 @@ class CityTestCase(TestCase):
         city = random.choice(city_list)
         test_data['city_id'] = city['id']
         print('--当前城市--%s'%  city['cityName'])
-
-
-
-
 
     def test_02_city_area(self):
         url = 'http://localhost:8000/active/area'
@@ -31,18 +28,47 @@ class CityTestCase(TestCase):
         area_list = resp.json().get('data')
         area = random.choice(area_list)
         print('--当前区县--%s'% area['AreaName'] )
-        self.area_id = area['id']
+        # self.area_id = area['id']
+        test_data['area_id'] = area['id']
+        print(test_data['area_id'])
+
+    def test_03_commodity(self):
+        url = 'http://localhost:8000/active/area/commod'
+        print(test_data['area_id'])
+        resp = requests.get(url, {
+            'id': test_data['area_id']
+        })
+        commod_list = resp.json().get('data')
+        for i  in commod_list:
+            print(i['commodity']['commodityName'])
+
+
+    def test_04_active(self):
+        url = 'http://localhost:8000/active/act'
+        resp = requests.get(url)
+        act_list = resp.json().get('data')
+        for act in act_list:
+            print(act)
+
+    def test_05_active(self):
+        url = 'http://localhost:8000/active/nav'
+        resp = requests.get(url)
+        nav_list = resp.json().get('data')
+        for nav in nav_list:
+            print(nav)
+
+    def test_06_active(self):
+        url = 'http://localhost:8000/active/address/'
+        resp = requests.post(url,data={
+            'id':'7809878757',
+            "privName": "陕西省",
+            "cityName": "西安市",
+            "streetName": "高新路",
+            "specify": "高新科技"
+        })
+        addr_list = resp.json
+        print('----添加成功----')
+
 
 if __name__ == '__main__':
     unittest.main()
-
-# if __name__ == '__main__':
-#     suitel = unittest.TestSuite()
-#     suitel.addTest(CityTestCase.test_dll_city)
-#
-#     suite2 = unittest.TestSuite()
-#     suitel.addTest(CityTestCase.test_css_city)
-#
-#     all_suite = unittest.TestSuite((suitel,suite2))
-#
-#     unittest.TextTestRunner().run(all_suite)

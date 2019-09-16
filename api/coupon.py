@@ -7,10 +7,10 @@ from goods.models import CouponModel
 
 
 class CouponSerializer(serializers.HyperlinkedModelSerializer):
-    userId=UserSerializer(many=False)
+    user=UserSerializer(many=False)
     class Meta:
         model = CouponModel
-        fields = ("couponCode", "userId",
+        fields = ("couponCode", "user",
                     "couponName", "couponMoney", "couponType", "LimitPrice", "giveoutTime", "validTime")
 
 

@@ -9,7 +9,7 @@ from api.user import UserSerializer
 
 
 class CartSerializer(serializers.HyperlinkedModelSerializer):
-    user_id = UserSerializer()
+    user = UserSerializer()
 
     class Meta:
         model = CartModel

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="../static/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/imageloop.css"/>
+		<style type="text/css">
+			.container-fluid{
+				bottom: 0;
+				height: 600px;
+				background-color: aliceblue;
+				position: relative;
+			}
+			#nav{
+				background-color: white;
+				/* height: 50px; */
+				width: 100%;
+				padding-bottom: 10px;
+				bottom: 0px;
+				position: fixed;
+				text-align: center;
+			}
+			a{
+				color: gray;
+			}
+			a:link{
+				text-decoration: none;
+			}
+			img{
+				width: 40px;
+				height: 30px;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<!--初始图片-->
+			<img src="img/1.jpg" id="pic" />
+			<!--显示数字列表-->
+			<ul id="list">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+
+			</ul>
+			<!--左右按钮-->
+			<div id="left" class="btn">&lt;</div>
+			<div id="right" class="btn">&gt;</div>
+		</div>
+        <div class="container">
+        <div class="row" id="active" >
+        <div class="col-xs-3" style="height: 60px" v-for="i in acti">
+             <img src="{{ i.pictureUrl }}"/>
+            {{ i.activeName }}
+        </div>
+        </div>
+    </div>
+		<div class="container-fluid">
+			<div id="nav" class="row">
+				<div id="home" class="col-xs-3">
+					<div align="center">
+						<img src="https://img05.yiguoimg.com/e/web/170110/00583/164146/nav_home_selected.png" >
+					</div>
+					<a href="">首页</a>
+				</div>
+				<div id="category" class="col-xs-3">
+					<div align="center">
+						<img src="https://img07.yiguoimg.com/d/web/180508/01315/170504/nav_classify.png" >
+					</div>
+					<a href="">分类</a>
+				</div>
+				<div id="shopcart" class="col-xs-3">
+					<div align="center">
+						<img src="https://img05.yiguoimg.com/e/web/170110/00583/164146/nav_list.png">
+					</div>
+					<a href="">购物车</a>
+				</div>
+				<div id="myego" class="col-xs-3">
+					<div align="center">
+						<img src="https://img07.yiguoimg.com/e/web/170110/00583/164146/nav_user.png" >
+					</div>
+					<a href="">我的易果</a>
+				</div>
+			</div>
+		</div>
+		<script src="../static/js/jquery.min.js"></script>
+        <script src="../static/js/bootstrap.min.js"></script>
+		<script src="../static/js/imageloop.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../static/js/vue.min.js"></script>
+	<script>
+    url='http://localhost:8000/active/nav/'
+
+    $(document).ready(function()
+{
+fetch(url, {
+            method: 'get',
+                mode: 'cors',
+                headers:{
+                   'Content-Type': 'application/json'
+                }
+        }).then(data => ss=data.json()).then(res=> {var actives  =res.data
+        console.log(actives)
+        var vm = new Vue({
+            el:'#active',
+            data:{
+                acti:actives,
+                msg:'hello'
+            },
+        })})
+
+})
+
+
+</script>
+	</body>
+</html>

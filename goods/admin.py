@@ -14,9 +14,9 @@ admin.site.register(CategoryModel, CategoryAdmin)
 
 
 class CouponModelAdmin(admin.ModelAdmin):
-    list_display = ("couponCode", "userId_id",
+    list_display = ("couponCode", "user_id",
                     "couponName", "couponMoney", "couponType", "LimitPrice", "giveoutTime", "validTime")
-    fields = ("couponCode","userId_id","couponName","couponMoney","couponType","LimitPrice","giveoutTime","validTime")
+    fields = ("couponCode","user_id","couponName","couponMoney","couponType","LimitPrice","giveoutTime","validTime")
     list_per_page = 10
     search_fields = ("couponCode",)
 

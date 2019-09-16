@@ -34,7 +34,9 @@ INSTALLED_APPS = [
     'cart',
     'activity',
     'rest_framework',
+    'corsheaders',
     'captcha',
+
 ]
 
 MIDDLEWARE = [
@@ -45,6 +47,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'OneGuyAPI.urls'
@@ -147,10 +151,14 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'django_filters.rest_framework.DjangoFilterBackend',
+        # 'django_filters.rest_framework.DjangoFilterBackend',
     ]
 }
 
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8000',
+    'http://localhost:63342'
+)
 #  缓存
 # CACHES = {
 #     'default': {
@@ -176,6 +184,7 @@ CORS_ALLOW_METHODS = (
     'POST',
     'PUT',
 )
+
 # 跨域允许的头部参数(可选)
 CORS_ALLOW_HEADERS = (
     'XMLHttpRequest',

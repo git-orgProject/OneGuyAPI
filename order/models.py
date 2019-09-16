@@ -4,6 +4,8 @@ from django.db.models import Q
 from common import YGBaseModel
 
 # Create your models here.
+from goods.models import CommodityModel
+
 
 class CityModel(YGBaseModel):
     cityName = models.CharField(max_length=20,
@@ -19,6 +21,22 @@ class CityModel(YGBaseModel):
         db_table = 't_city'
         verbose_name_plural = verbose_name = '城市'
 
+
+
+class AddressModel(YGBaseModel):
+    privName = models.CharField(max_length=20,
+                                verbose_name='省份')
+    cityName = models.CharField(max_length=20,
+                                verbose_name='城市')
+    streetName = models.CharField(max_length=20,
+                                  verbose_name='街道')
+    specify = models.CharField(max_length=50,
+                                  verbose_name='详细地址')
+
+    class Meta:
+        db_table = 't_address'
+        verbose_name_plural = verbose_name = '收货地址'
+
 class AreaModel(YGBaseModel):
     AreaName = models.CharField(max_length=20,verbose_name='地区名')
     city = models.ForeignKey(CityModel,related_name='area',
@@ -29,6 +47,23 @@ class AreaModel(YGBaseModel):
     class Meta:
         db_table = 't_area'
         verbose_name_plural = verbose_name = '地区'
+
+class Area_commodityModel(YGBaseModel):
+    area = models.ForeignKey(AreaModel,verbose_name='地区',related_name='area',on_delete=models.SET_NULL,
+                             null=True,blank=True)
+    commodity = models.ForeignKey(CommodityModel,verbose_name='商品',related_name='commodity',on_delete=models.SET_NULL,
+                                  null=True,blank=True)
+    @property
+    def cityname(self):
+        return  AreaModel.objects.get(pk=self.area_id).AreaName
+
+    @property
+    def commodityname(self):
+        return CommodityModel.objects.get(pk=self.commodity_id).commodityName
+
+    class Meta:
+        db_table='t_area_commodity'
+        verbose_name_plural=verbose_name = '地区商品'
 
 
 class OrederManager(models.Manager):  #重写get_queryset方法

@@ -17,6 +17,6 @@ api_router.register('CommodityCart', CommodityCartAPIView)
 api_router.register('Category',CategoryAPIView)
 api_router.register('user',UserAPIView)
 api_router.register('order',OrderAPIView)
-api_router.register('coupom',CouponAPIView)
+api_router.register('coupon',CouponAPIView)
 
 
