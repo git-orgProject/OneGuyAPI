@@ -13,7 +13,7 @@ class CartSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = CartModel
-        fields = ('user_id', 'user_state')
+        fields = ('user', 'user_state')
 
 
 class CartAPIView(viewsets.ModelViewSet):

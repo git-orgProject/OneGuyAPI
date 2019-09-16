@@ -9,7 +9,7 @@ from goods.models import CommodityModel
 
 
 class CartModel(YGBaseModel):
-    user_id = models.OneToOneField(UserModel,
+    user = models.OneToOneField(UserModel,
                                    verbose_name='用户ID',
                                    on_delete=models.CASCADE)
     user_state = models.IntegerField(verbose_name="用户状态",
